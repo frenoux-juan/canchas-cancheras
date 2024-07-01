@@ -1,0 +1,30 @@
+{% extends "web/base.html" %}
+{% load static %}
+
+{% block titulo %}NUESTRAS CANCHAS » Eliminar Cancha{% endblock %}
+
+{% block extra_css_js %}
+    <link rel="stylesheet" href="{% static 'web/css/administrar.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{% static 'web/js/canchas.js' %}"></script>
+{% endblock %}
+
+{% block principal %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <br><br><br>
+            <h2>Eliminar Cancha</h2>
+            <p>¿Está seguro que desea eliminar la cancha "{{ cancha.nombre }}"?</p>
+
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+            </form>
+
+            <a href="{% url 'listar_canchas' %}" class="btn btn-secondary mt-3">Volver a la lista de canchas</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

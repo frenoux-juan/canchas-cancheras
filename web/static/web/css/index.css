@@ -1,0 +1,393 @@
+#novedades {
+  display:flex;
+  flex-direction:column;
+  z-index: 1;
+  background: linear-gradient(to right, #184d99, #e90066);
+}
+#novedades:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 535px;
+  width: 100%;
+  height: 10px;
+  background: linear-gradient(to right, #184d99, #e90066);
+  z-index: 999;
+}
+#carrusel {
+  min-height:540px;
+  width:100%;
+  padding:0;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+}
+.carruseles {
+  display:flex;
+  position:absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height:540px;
+  color:#dce5eb;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+  z-index: 0;
+  align-items:center;
+  justify-content:center;
+}
+.carruseles:before {
+  content: "";
+  position: absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  background-image:url("../img/lineas.svg");
+  background-size:cover;
+  background-repeat:no-repeat;
+  mix-blend-mode:multiply;
+  transition:.5s ease-in;
+  opacity: 0.2;
+  animation: kenBurns 25s infinite alternate;
+  filter: grayscale(100%);
+}
+@keyframes kenBurns {
+  0% {
+    transform: scale(1) translate(0%, 0%);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(1.52) translate(0%, 0%);
+    opacity: 0.8;
+  }
+}
+.carruseles.centro {
+  opacity: 1;
+  z-index: 1;
+}
+.carruseles.izquierda, .carruseles.derecha {
+  opacity: 0;
+  z-index: 0;
+}
+.carruseles img {
+  height:400px;
+}
+.carruseles .contenedor {
+  padding:140px 40px 60px 40px !important;
+  z-index: 1;
+}
+
+#carruselPrincipal {
+  background:linear-gradient(-45deg, #0c2955, #e90066);
+}
+#carruselPrincipal:before {
+  background-image:url("https://loremflickr.com/1920/1080/messi");
+}
+#carruselDos {
+  background:linear-gradient(45deg, #0c2955, #60bdd9);
+}
+#carruselDos:before {
+  background-image:url("https://loremflickr.com/1920/1080/football,stadium");
+}
+#carruselTres {
+  background:linear-gradient(45deg, #7ac143, #60bdd9);
+}
+#carruselTres:before {
+  background-image:url("https://loremflickr.com/1920/1080/estadio,futbol");
+}
+#carruselCuatro {
+  background:linear-gradient(-45deg, #f85a40, #be0027);
+}
+#carruselCuatro:before {
+  background-image:url("https://loremflickr.com/1920/1080/mundial,futbol");
+}
+
+
+#carruselPrincipal .contenedor {
+  gap:20px;
+}
+#carruselPrincipal h1, .carruseles p.titulo {
+  margin:0 0 20px 0;
+  font-size: 3em;
+  font-weight: 700;
+  font-family: "Roboto Condensed", sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(0,0,0,0.5), 0 0 30px rgba(0,0,0,0.2);
+}
+#carruselPrincipal h1 span {
+  display:none;
+}
+#carruselPrincipal img {
+  max-height:150px;
+  filter: invert(1);
+}
+#carruselPrincipal .cls-1 {
+  fill:#dce5eb !important;
+}
+.carruseles p {
+  font-size:1.5em;
+  font-weight:400;
+}
+.izquierda {
+  opacity:0;
+  transition:.3s ease-in;
+}
+.centro {
+  opacity:1;
+  transition:.5s ease-in;
+}
+.derecha {
+  opacity:0;
+  transition:.3s ease-in;
+}
+#botonAnterior, #botonSiguiente {
+  z-index: 999 !important;
+  top:290px;
+  background:#dce5eb;
+  width:25px;
+  height:40px;
+  border:0;
+  overflow:hidden;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:absolute;
+  transition:.3s ease-in;
+  box-shadow:0 0 20px rgba(0,0,0,0.2);
+}
+#botonAnterior:hover, #botonSiguiente:hover {
+  background:#DC834E;
+  transition:.2s ease-out;
+}
+#botonAnterior {
+  left:0;
+  border-radius:0 100px 100px 0;
+  padding:0 5px 0 0;
+  background:linear-gradient(-45deg, #0c2955, #e90066);
+}
+#botonAnterior:hover {
+  background:linear-gradient(135deg, #0c2955, #e90066);
+}
+#botonSiguiente {
+  right:0;
+  border-radius:100px 0 0 100px;
+  padding:0 0 0 5px;
+  background:linear-gradient(-135deg, #e90066, #0c2955);
+}
+#botonSiguiente:hover {
+  background:linear-gradient(-45deg, #e90066, #0c2955);
+}
+
+#botonAnterior i, #botonSiguiente i {
+  color:#ccc;
+  transition:.2s ease-out;
+}
+#botonAnterior:hover i, #botonSiguiente:hover i {
+  color:#dce5eb;
+  transition:.2s ease-out;
+}
+
+/**/
+/* CANCHAS */
+#canchas {
+  background:#000;
+  position: relative;
+  z-index: 2;
+}
+video .video-stream .html5-main-video {
+  width:100% !important;
+}
+
+#canchas::after {
+  position: absolute;
+  content: "";
+  background-image: url("../img/canchasBg.webp");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  opacity: 0.2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+#canchas h2 {
+  text-transform: uppercase;
+  color:#dce5eb;
+  font-size:2em;
+}
+#canchas ul { 
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+#canchas ul li {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+#canchas ul li h3 {
+  color:#dce5eb;
+}
+.cancha img {
+  width:100%;
+  opacity:0.8;
+  transition:.2s ease-in;
+  box-shadow:0 0 30px rgb(0, 0, 0, 0.5),
+    inset 0 0 0 10px rgba(255, 255, 255, 1);
+}
+.cancha img:hover {
+  opacity:1;
+  box-shadow:0 0 30px rgb(0, 0, 0, 0.5),
+    inset 0 0 0 10px rgba(255, 255, 255, 1);
+  transition:.2s ease-out;
+}
+#canchas .boton {
+  font-size:1.2em;
+  background:#DC834E !important;
+  transition:.2s ease-in;
+}
+#canchas .boton:hover {
+  background:#7ac143 !important;
+  transition:.2s ease-out;
+  text-shadow:0 0 10px rgba(0,0,0,0.5);
+}
+
+/**/
+/* CREÁ TU CUENTA */
+#canchaPersonalizada {
+  background:linear-gradient(-45deg, #388e3c, #e90066);
+  position: relative;
+}
+#canchaPersonalizada .overlay {
+  position: absolute;
+  content: "";
+  background-image: url("../img/icono.svg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 60%;
+  background-position: 120%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+#canchaPersonalizada .overlay::after {
+  position: absolute;
+  content: "";
+  background-image: url("../img/icono.svg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 60%;
+  background-position: 120%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: blur(40px);
+  z-index:1;
+}
+#canchaPersonalizada .contenedor {
+  flex-direction:row;
+}
+#canchaPersonalizada h2 {
+  margin:0 0 40px 0;
+  text-transform: uppercase;
+  color:#dce5eb;
+  font-size:2em;
+}
+#canchaPersonalizada h2 i {
+  margin:0 10px 0 0;
+}
+.listaIconos {
+  z-index: 9;
+  padding:60px 0;
+}
+.listaIconos li {
+  display:flex;
+  align-items:center;
+}
+.listaIconos h3, .listaIconos p {
+  color:#dce5eb;
+}
+.listaIconosli > .boton {
+  margin:20px 0 0
+}
+.listaIconos li i {
+  font-size:24px;
+  color:#dce5eb;
+  margin:0 25px 0 0;
+}
+#canchaPersonalizada .boton {
+  margin:0 auto;
+  margin:20px 0 0 50px;
+  font-size:1.2em;
+}
+
+
+
+/**/
+/*  RESPONSIVE */
+
+@media(max-width:480px){
+
+  /* NOVEDADES */
+  .carruseles {
+    padding:0 !important;
+  }
+  .carruseles div.contenedor {
+    padding:0 40px !important;
+  }
+  #botonAnterior, #botonSiguiente  {
+      height:40px;
+      width:20px !important;
+  }
+  #botonAnterior a, #botonSiguiente a {
+      padding:0 !important;
+      margin:0 auto;
+  }
+  #botonSiguiente a  {
+      right:-5px;
+  }
+  #botonAnterior i, #botonSiguiente i {
+      font-size:15px;
+  }
+  #novedades .contenedor {
+    grid-template-columns:1fr;
+  }
+
+  /**/
+  /* CANCHAS */
+  #canchas ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /**/
+  /* CREÁ TU CUENTA */
+  #canchaPersonalizada .contenedor {
+    flex-direction:column;
+    background:none;
+    padding:60px 0;
+  }
+  #canchaPersonalizada ul {
+    width:100%;
+    padding:0;
+  }
+  #canchaPersonalizada h2 {
+    text-align:center;
+  }
+  .ilustracion { 
+    display:none;
+  }
+  .mobileImg {
+    display:flex;
+    width:80%;
+    margin:0 auto;
+  }
+}

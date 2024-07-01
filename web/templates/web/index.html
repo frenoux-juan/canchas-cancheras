@@ -1,0 +1,173 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block titulo %} CANCHAS CANCHERAS - Reservá tu cancha !{% endblock %}
+{% block extra_css_js %}
+  <link rel="stylesheet" href="{% static '/web/css/index.css' %}">
+  <!-- ACÁ CARGAMOS LOS JS -->
+  <script src="{% static 'web/js/carrusel.js' %}"></script>
+{% endblock %}
+
+{% block principal %}
+  <!-- MAIN -->
+  <main id="novedades">
+    <ul id="carrusel" class="w100">
+  
+      <li id="carruselPrincipal" class="carruseles centro">
+        <div class="contenedor">
+          <h1>Bienvenido a <span>Canchas Cancheras</span></h1>
+          <img src="{% static '/web/img/logo.svg' %}">
+          </p>
+        </div>
+      </li>
+      <li id="carruselDos" class="carruseles w100">
+        <div class="contenedor">
+          <p class="titulo">Conocé nuestras canchas</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec
+            mi sed odio tristique aliquet. 
+          </p>
+        </div>
+      </li>
+      <li id="carruselTres" class="carruseles w100">
+        <div class="contenedor">
+          <p class="titulo">Personalizá tu cancha !</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec
+            mi sed odio tristique aliquet.
+          </p>
+        </div>
+      </li>
+      <li id="carruselCuatro" class="carruseles w100">
+        <div class="contenedor">
+          <p class="titulo">¡La cancha que siempre soñaste!</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec
+            mi sed odio tristique aliquet.
+          </p>
+        </div>
+      </li>
+  
+      <!-- BOTONES -->
+      <a id="botonAnterior">
+        <i class="fas fa-angle-left" aria-hidden="true"></i>
+      </a>
+      <a id="botonSiguiente">
+        <i class="fas fa-angle-right" aria-hidden="true"></i>
+      </a>
+  
+    </ul>
+  </main>
+  <!-- CANCHAS -->
+  <section id="canchas">
+    <article class="contenedor">
+      <h2><i class="fa-regular fa-futbol"></i> Conocé nuestras canchas</h2>
+      <div class="contenedor2 cancha">
+        <ul class="w45">
+          {% for cancha in contexto %}
+          <li>
+            <img src="https://picsum.photos/240/150?random={{ cancha.id }}.webp" alt="">
+            <h3 title="{{ cancha.nombre }}">{{ cancha.nombre }}</h3>
+          </li>
+          {% endfor %}
+        </ul>
+        <iframe class="w55" width="100%" height="320"
+          src="https://www.youtube.com/embed/cIZfkEOfRFc?si=dPbeBSmIG-pocL3j?start=6&autoplay=1&mute=1&controls=0&modestbranding=1&loop=1"
+          title="Canchas Cancheras"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+      </iframe>
+      </div>
+      <button class="boton"><a href="{% url 'canchas' %}">» Ver todas las canchas</a></button>
+    </article>
+  </section>
+  
+  
+  <!-- CANCHA PERSONALIZADA -->
+  <section id="canchaPersonalizada">
+    <div class="overlay"></div>
+    <article class="contenedor">
+      <img class="mobileImg" src="{% static '/web/img/logo.svg' %}" alt="">
+      <ul class="listaIconos w60">
+        <h2><i class="fa-regular fa-futbol"></i> ¿Buscás una cancha personalizada?</h2>
+        <li>
+          <i class="fa-solid fa-pen"></i>
+          <div>
+            <h3>Medidas personalizadas.</h3>
+            <p>Diseñamos juntos la idea que tenés.</p>
+          </div>
+        </li>
+        <li>
+          <i class="fa-solid fa-spa"></i>
+          <div>
+            <h3>Diferentes tipos de superficies</h3>
+            <p>Césped natural o artificial, tierra batida, cemento, parquet.</p>
+          </div>
+        </li>
+        <li>
+          <i class="fa-solid fa-font-awesome"></i>
+          <div>
+            <h3>Instalaciones adicionales</h3>
+            <p>Graderías, asientos, iluminación, marcadores.</p>
+          </div>
+        </li>
+        <li>
+            <i class="fa-regular fa-futbol"></i>
+          <div>
+            <h3>Accesorios y Equipamiento</h3>
+            <p>Arcos, redes y vallas, canastas, raquetas, pelotas, etc.</p>
+          </div>
+        </li>
+        <li>
+          <button class="boton"><a href="{% url 'ventaCustom' %}">» Quiero personalizar mi cancha</a></button>
+        </li>
+      </ul>
+      <div class="ilustracion w40"></div>
+    </article>
+    
+  </section>
+  
+  
+  <!-- reservaTuCancha -->
+  <!--
+  <section id="reservaTuCancha">
+    <article class="contenedor">
+      <h2><i class="fa-regular fa-futbol"></i> ¿Estás pensando en tu cancha personalizada?</h2>
+      <div class="row">
+        <form id="formularioReservas" class="w50" method="post" action="{% url 'index' %}">
+          {% csrf_token %}          
+          {{ formulario_venta }}
+          <button class="boton">
+            <input type="submit" value="» Enviar">
+          </button>
+          <div id="error">* Mensaje de error !</div>
+        </form>
+        <ul class="listaIconos w50">
+          <li>
+            <i class="fa-regular fa-futbol"></i>
+            <p>Alquiler de pelotas profesionales.</p>
+          </li>
+          <li>
+            <i class="fa-solid fa-volleyball"></i>
+            <p>Alquiler de pelotas de Papi Futbol N°3, N°4 y N°5.</p>
+          </li>
+          <li>
+            <i class="fa-solid fa-person-running"></i>
+            <p>Espacios para precalentamiento.</p>
+          </li>
+          <li>
+            <i class="fa-solid fa-mitten"></i>
+            <p>Alquiler de parrilla y cocina.</p>
+          </li>
+          <li>
+            <i class="fa-solid fa-shower"></i>
+            <p>Vestuario con duchas calientes.</p>
+          </li>
+          <li>
+            <i class="fa-solid fa-beer-mug-empty"></i>
+            <p>Venta de bebidas.</p>
+          </li>
+        </ul>  
+      </div>    
+    </article>
+  </section>
+  -->
+{% endblock %}
